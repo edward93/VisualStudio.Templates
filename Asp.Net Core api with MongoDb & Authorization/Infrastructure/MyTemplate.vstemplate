@@ -1,0 +1,20 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <CreateInPlace>true</CreateInPlace>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="ProjectName.Infrastructure.csproj" File="ProjectName.Infrastructure.csproj" ReplaceParameters="true">
+      <Folder Name="Constants" TargetFolderName="Constants">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EntityConstants.cs">EntityConstants.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Enums" TargetFolderName="Enums">
+        <ProjectItem ReplaceParameters="true" TargetFileName="MessageType.cs">MessageType.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Helpers" TargetFolderName="Helpers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ListHelpers.cs">ListHelpers.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Message.cs">Message.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceResult.cs">ServiceResult.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
