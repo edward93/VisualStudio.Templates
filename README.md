@@ -8,4 +8,8 @@ This contains 4 projects inside of it.
 3) [ProjectName].Infrastructure
 4) [ProjectName].ServiceLayer
 
+### How To Use
+Clone this repository then navigate to the desired folder (depending which template you want) select all files and folders there
+and compress them and create a zip file. Then copy that zip file into the *templates* location of your **Visual Studio 2017**. Now when you start Visual Studio 2017 and create a new project you will see newly added project templtes under the **Visual C#** section.
+
 **This readme will be updated later on
