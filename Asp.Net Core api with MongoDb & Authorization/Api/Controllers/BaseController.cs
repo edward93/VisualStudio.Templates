@@ -21,10 +21,10 @@ namespace $safeprojectname$.Controllers
             serviceResult.Messages.AddMessage(MessageType.Error, ex.Message);
         }
 
-        protected string GetPerson()
+        protected string GetUserId()
         {
-            var personId = User.Claims.Where(c => c.Type == "personId").Select(c => c.Value).FirstOrDefault();
-            return personId;
+            var userId = User.Claims.Where(c => c.Type == "userId").Select(c => c.Value).FirstOrDefault();
+            return userId;
         }
     }
 }
