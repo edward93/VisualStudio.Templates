@@ -32,6 +32,11 @@ namespace $safeprojectname$.Repositories
         {
             return await DbContext.Set<T>().ToListAsync();
         }
+		
+		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+        {
+            return await DbContext.Set<T>().Where(filter).ToListAsync();
+        }
 
         public async Task<T> RemoveEntityAsync<T>(int entityId) where T : Entity
         {

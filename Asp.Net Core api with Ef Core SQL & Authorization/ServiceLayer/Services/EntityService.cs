@@ -30,6 +30,11 @@ namespace $safeprojectname$.Services
         {
             return await _entityRepository.GetAllEntitiesAsync<T>();
         }
+		
+		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+        {
+            return await _entityRepository.GetAllEntitiesAsync(filter);
+        }
 
         public async Task<T> RemoveEntityAsync<T>(int entityId) where T : Entity
         {
