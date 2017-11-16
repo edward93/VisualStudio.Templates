@@ -117,6 +117,9 @@ namespace $safeprojectname$
             {
                 app.UseDeveloperExceptionPage();
             }
+			
+			// Using authentication
+            app.UseAuthentication();
 
             app.UseMvc();
         }
