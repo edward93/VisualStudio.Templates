@@ -16,6 +16,7 @@ using $safeprojectname$.Infrastructure;
 using $ext_safeprojectname$.DAL.Context;
 using $ext_safeprojectname$.ServiceLayer.Repositories;
 using $ext_safeprojectname$.ServiceLayer.Services;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace $safeprojectname$
 {
