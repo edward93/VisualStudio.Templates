@@ -16,7 +16,7 @@ namespace $safeprojectname$.Services
             _entityRepository = entityRepository;
         }
 
-        public async Task<T> GetByIdAsync<T>(int entityId) where T : Entity
+        public async Task<T> GetByIdAsync<T>(long entityId) where T : Entity
         {
             return await _entityRepository.GetByIdAsync<T>(entityId);
         }
@@ -36,7 +36,7 @@ namespace $safeprojectname$.Services
             return await _entityRepository.GetAllEntitiesAsync(filter);
         }
 
-        public async Task<T> RemoveEntityAsync<T>(int entityId) where T : Entity
+        public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity
         {
             return await _entityRepository.RemoveEntityAsync<T>(entityId);
         }

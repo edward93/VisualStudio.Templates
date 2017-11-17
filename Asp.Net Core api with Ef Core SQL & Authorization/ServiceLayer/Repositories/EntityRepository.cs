@@ -18,7 +18,7 @@ namespace $safeprojectname$.Repositories
             DbContext = dbContext;
         }
 
-        public async Task<T> GetByIdAsync<T>(int entityId) where T : Entity
+        public async Task<T> GetByIdAsync<T>(long entityId) where T : Entity
         {
             return await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
         }
@@ -38,7 +38,7 @@ namespace $safeprojectname$.Repositories
             return await DbContext.Set<T>().Where(filter).ToListAsync();
         }
 
-        public async Task<T> RemoveEntityAsync<T>(int entityId) where T : Entity
+        public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity
         {
             var entityToRemove = await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
             DbContext.Set<T>().Remove(entityToRemove);
