@@ -100,6 +100,12 @@ namespace $safeprojectname$
             services.AddScoped<IUserService, UserService>();
 
             services.AddMvc();
+			
+			// Register the Swagger generator, defining one or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "$ext_safeprojectname$", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -120,6 +126,15 @@ namespace $safeprojectname$
 			
 			// Using authentication
             app.UseAuthentication();
+			
+			// Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zx-5");
+            });
 
             app.UseMvc();
         }
