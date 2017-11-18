@@ -125,7 +125,7 @@ namespace $safeprojectname$
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zx-5");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "$ext_safeprojectname$");
             });
 
             app.UseMvc();
