@@ -14,6 +14,9 @@
       <Folder Name="GenericEntity" TargetFolderName="GenericEntity">
         <ProjectItem ReplaceParameters="true" TargetFileName="Entity.cs">Entity.cs</ProjectItem>
       </Folder>
+      <Folder Name="Helpers" TargetFolderName="Helpers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="OrmHelpers.cs">OrmHelpers.cs</ProjectItem>
+      </Folder>
     </Project>
   </TemplateContent>
 </VSTemplate>

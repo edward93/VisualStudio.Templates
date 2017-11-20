@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using $ext_safeprojectname$.DAL.Context;
 using $ext_safeprojectname$.DAL.GenericEntity;
+using $ext_safeprojectname$.DAL.Helpers;
+
 
 namespace $safeprojectname$.Repositories
 {
@@ -23,9 +25,14 @@ namespace $safeprojectname$.Repositories
             return await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
         }
 
-        public async Task<T> GetEntity<T>(Expression<Func<T, bool>> filter) where T : Entity
+        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
         {
             return await DbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
+        }
+
+        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, Object>>[] includes) where T : Entity
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>() where T : Entity
@@ -36,6 +43,11 @@ namespace $safeprojectname$.Repositories
 		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
         {
             return await DbContext.Set<T>().Where(filter).ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, Object>>[] includes) where T : Entity
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).ToListAsync();
         }
 
         public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity

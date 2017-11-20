@@ -21,9 +21,14 @@ namespace $safeprojectname$.Services
             return await _entityRepository.GetByIdAsync<T>(entityId);
         }
 
-        public async Task<T> GetEntity<T>(Expression<Func<T, bool>> filter) where T : Entity
+        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
         {
-            return await _entityRepository.GetEntity(filter);
+            return await _entityRepository.GetEntityAsync(filter);
+        }
+
+        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes) where T : Entity
+        {
+            return await _entityRepository.GetEntityAsync(filter, includes);
         }
 
         public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>() where T : Entity
@@ -34,6 +39,11 @@ namespace $safeprojectname$.Services
 		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
         {
             return await _entityRepository.GetAllEntitiesAsync(filter);
+        }
+
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes) where T : Entity
+        {
+            return await _entityRepository.GetAllEntitiesAsync(filter, includes);
         }
 
         public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity

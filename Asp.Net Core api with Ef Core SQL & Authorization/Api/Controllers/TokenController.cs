@@ -45,7 +45,7 @@ namespace $safeprojectname$.Controllers
             {
                 if (!ModelState.IsValid)
                     throw new Exception(GetModelStateErrors());
-                var result = await _userService.GetEntity<User>(c => c.Email == model.UserName);
+                var result = await _userService.GetEntityAsync<User>(c => c.Email == model.UserName);
                 if (result == null)
                 {
                     throw new Exception("User name or password is incorrect");
