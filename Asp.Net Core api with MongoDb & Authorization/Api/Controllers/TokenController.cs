@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
 using $safeprojectname$.Infrastructure;
@@ -26,7 +27,8 @@ namespace $safeprojectname$.Controllers
 
         public TokenController(IUserService userService,
             IOptions<TokenProviderOptions> options,
-            IOptions<AppSettings> settings)
+            IOptions<AppSettings> settings,
+            ILoggerFactory logger) : base(logger, settings)
         {
             _userService = userService;
             _options = options.Value;

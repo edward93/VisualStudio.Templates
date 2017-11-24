@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using $safeprojectname$.Infrastructure;
 using $safeprojectname$.ViewModels;
@@ -24,7 +25,8 @@ namespace $safeprojectname$.Controllers
         private readonly TokenProviderOptions _options;
         public TokenController(IUserService userService,
             IOptions<TokenProviderOptions> options,
-            IOptions<AppSettings> settings)
+            IOptions<AppSettings> settings,
+            ILoggerFactory logger) : base(logger, settings)
         {
             _userService = userService;
             _options = options.Value;

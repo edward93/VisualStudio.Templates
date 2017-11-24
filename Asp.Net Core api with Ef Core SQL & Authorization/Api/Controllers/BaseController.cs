@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using $safeprojectname$.Infrastructure;
 using $ext_safeprojectname$.Infrastructure.Enums;
 using $ext_safeprojectname$.Infrastructure.Helpers;
 
@@ -8,6 +11,15 @@ namespace $safeprojectname$.Controllers
 {
     public class BaseController : Controller
     {
+        protected readonly ILogger Logger;
+        protected readonly AppSettings Settings;
+
+        public BaseController(ILoggerFactory loggerFactory, IOptions<AppSettings> settings)
+        {
+            Logger = loggerFactory.CreateLogger("Controller");
+            Settings = settings.Value;
+        }
+
         protected string GetModelStateErrors()
         {
             return string.Join("; ", ModelState.Values

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ using $ext_safeprojectname$.DAL.Context;
 using $ext_safeprojectname$.ServiceLayer.Repositories;
 using $ext_safeprojectname$.ServiceLayer.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using Newtonsoft.Json;
+using Serilog;
 
 namespace $safeprojectname$
 {
@@ -92,7 +95,10 @@ namespace $safeprojectname$
             // Repositories
             services.AddScoped<IEntityRepository, EntityRepository>();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 			
 			// Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -108,8 +114,12 @@ namespace $safeprojectname$
             {
                 builder.AllowCredentials().AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             });
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+
+            var loggerConfig = new LoggerConfiguration()
+                .WriteTo.File(Path.Combine(env.WebRootPath, "Logs", "log-.json"), rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            loggerFactory.AddSerilog(loggerConfig);
 
             if (env.IsDevelopment())
             {
