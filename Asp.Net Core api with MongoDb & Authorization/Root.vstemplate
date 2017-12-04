@@ -1,7 +1,9 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
     <Name>ASP.NET Core With MongoDb</Name>
-    <Description>Generates API controlle project and DAL with MongoDb Context and generic Entity.cs file and Token Authorization v0.2.2</Description>
+    <Description>Generates API controlle project and DAL with MongoDb Context and generic Entity.cs file and Token Authorization 
+    v0.2.4
+    </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
     <SortOrder>10</SortOrder>

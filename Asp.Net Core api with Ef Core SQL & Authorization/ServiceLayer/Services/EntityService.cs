@@ -7,66 +7,66 @@ using $safeprojectname$.Repositories;
 
 namespace $safeprojectname$.Services
 {
-    public class EntityService : IEntityService
+    public class EntityService<T> : IEntityService<T> where T : Entity
     {
-        private readonly IEntityRepository _entityRepository;
+        private readonly IEntityRepository<T> _entityRepository;
 
-        public EntityService(IEntityRepository entityRepository)
+        public EntityService(IEntityRepository<T> entityRepository)
         {
             _entityRepository = entityRepository;
         }
 
-        public async Task<T> GetByIdAsync<T>(long entityId) where T : Entity
+        public async Task<T> GetByIdAsync(long entityId)
         {
-            return await _entityRepository.GetByIdAsync<T>(entityId);
+            return await _entityRepository.GetByIdAsync(entityId);
         }
 
-        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+        public async Task<T> GetEntityAsync(Expression<Func<T, bool>> filter)
         {
             return await _entityRepository.GetEntityAsync(filter);
         }
 
-        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes) where T : Entity
+        public async Task<T> GetEntityAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes)
         {
             return await _entityRepository.GetEntityAsync(filter, includes);
         }
 
-        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>() where T : Entity
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync()
         {
-            return await _entityRepository.GetAllEntitiesAsync<T>();
+            return await _entityRepository.GetAllEntitiesAsync();
         }
-		
-		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter)
         {
             return await _entityRepository.GetAllEntitiesAsync(filter);
         }
 
-        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes) where T : Entity
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes)
         {
             return await _entityRepository.GetAllEntitiesAsync(filter, includes);
         }
 
-        public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity
+        public async Task<T> RemoveEntityAsync(long entityId)
         {
-            return await _entityRepository.RemoveEntityAsync<T>(entityId);
+            return await _entityRepository.RemoveEntityAsync(entityId);
         }
 
-        public async Task<T> CreateAsync<T>(T entity) where T : Entity
+        public async Task<T> CreateAsync(T entity)
         {
             return await _entityRepository.CreateAsync(entity);
         }
 
-        public async Task<IEnumerable<T>> CreateRangeAsync<T>(IEnumerable<T> entities) where T : Entity
+        public async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> entities)
         {
             return await _entityRepository.CreateRangeAsync(entities);
         }
 
-        public async Task<T> UpdateAsync<T>(T entity) where T : Entity
+        public async Task<T> UpdateAsync(T entity)
         {
             return await _entityRepository.UpdateAsync(entity);
         }
 
-        public async Task<IEnumerable<T>> UpdateRangeAsync<T>(IEnumerable<T> entities) where T : Entity
+        public async Task<IEnumerable<T>> UpdateRangeAsync(IEnumerable<T> entities)
         {
             return await _entityRepository.UpdateRangeAsync(entities);
         }

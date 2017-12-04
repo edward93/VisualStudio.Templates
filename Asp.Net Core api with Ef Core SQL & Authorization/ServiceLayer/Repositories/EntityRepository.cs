@@ -11,7 +11,7 @@ using $ext_safeprojectname$.DAL.Helpers;
 
 namespace $safeprojectname$.Repositories
 {
-    public class EntityRepository : IEntityRepository
+    public class EntityRepository<T> : IEntityRepository<T> where T : Entity 
     {
         protected readonly IEntityDbContext DbContext;
 
@@ -20,37 +20,27 @@ namespace $safeprojectname$.Repositories
             DbContext = dbContext;
         }
 
-        public async Task<T> GetByIdAsync<T>(long entityId) where T : Entity
+        public async Task<T> GetByIdAsync(long entityId)
         {
             return await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
         }
 
-        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+        public async Task<T> GetEntityAsync(Expression<Func<T, bool>> filter)
         {
             return await DbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
         }
 
-        public async Task<T> GetEntityAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, Object>>[] includes) where T : Entity
-        {
-            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).FirstOrDefaultAsync();
-        }
-
-        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>() where T : Entity
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync()
         {
             return await DbContext.Set<T>().ToListAsync();
         }
-		
-		public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter) where T : Entity
+
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter)
         {
             return await DbContext.Set<T>().Where(filter).ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllEntitiesAsync<T>(Expression<Func<T, bool>> filter, params Expression<Func<T, Object>>[] includes) where T : Entity
-        {
-            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).ToListAsync();
-        }
-
-        public async Task<T> RemoveEntityAsync<T>(long entityId) where T : Entity
+        public async Task<T> RemoveEntityAsync(long entityId)
         {
             var entityToRemove = await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
             DbContext.Set<T>().Remove(entityToRemove);
@@ -58,7 +48,7 @@ namespace $safeprojectname$.Repositories
             return entityToRemove;
         }
 
-        public async Task<T> CreateAsync<T>(T entity) where T : Entity
+        public async Task<T> CreateAsync(T entity)
         {
             entity.CreatedDt = DateTime.Now;
             entity.UpdatedDt = DateTime.Now;
@@ -67,7 +57,7 @@ namespace $safeprojectname$.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<T>> CreateRangeAsync<T>(IEnumerable<T> entities) where T : Entity
+        public async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> entities)
         {
             var createRange = entities as T[] ?? entities.ToArray();
             await DbContext.Set<T>().AddRangeAsync(createRange);
@@ -75,7 +65,7 @@ namespace $safeprojectname$.Repositories
             return createRange;
         }
 
-        public async Task<T> UpdateAsync<T>(T entity) where T : Entity
+        public async Task<T> UpdateAsync(T entity)
         {
             entity.UpdatedDt = DateTime.Now;
             DbContext.Set<T>().Update(entity);
@@ -83,12 +73,22 @@ namespace $safeprojectname$.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<T>> UpdateRangeAsync<T>(IEnumerable<T> entities) where T : Entity
+        public async Task<IEnumerable<T>> UpdateRangeAsync(IEnumerable<T> entities)
         {
             var updateRange = entities as T[] ?? entities.ToArray();
             DbContext.Set<T>().UpdateRange(updateRange);
             await DbContext.SaveChangesAsync();
             return updateRange;
+        }
+
+        public async Task<IEnumerable<T>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>>[] includes)
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).ToListAsync();
+        }
+
+        public async Task<T> GetEntityAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>>[] includes)
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).FirstOrDefaultAsync();
         }
     }
 }

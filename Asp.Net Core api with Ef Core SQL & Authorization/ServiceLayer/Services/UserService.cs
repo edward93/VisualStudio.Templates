@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Security.Cryptography;
+using $ext_safeprojectname$.DAL.Entities;
 using $safeprojectname$.Repositories;
 
 namespace $safeprojectname$.Services
 {
-    public class UserService : EntityService, IUserService
+    public class UserService : EntityService<User>, IUserService
     {
-        public UserService(IEntityRepository entityRepository) : base(entityRepository)
+        public UserService(IEntityRepository<User> entityRepository) : base(entityRepository)
         {
         }
 

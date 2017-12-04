@@ -17,6 +17,7 @@ using $safeprojectname$.Infrastructure;
 using $ext_safeprojectname$.DAL.Context;
 using $ext_safeprojectname$.ServiceLayer.Repositories;
 using $ext_safeprojectname$.ServiceLayer.Services;
+using $ext_safeprojectname$.DAL.GenericEntity;
 using Swashbuckle.AspNetCore.Swagger;
 using Newtonsoft.Json;
 using Serilog;
@@ -89,11 +90,10 @@ namespace $safeprojectname$
             services.AddScoped<IEntityDbContext, EntityDbContext>();
 
             // Services
-            services.AddScoped<IEntityService, EntityService>();
             services.AddScoped<IUserService, UserService>();
 
             // Repositories
-            services.AddScoped<IEntityRepository, EntityRepository>();
+            services.AddScoped<IEntityRepository<Entity>, EntityRepository<Entity>>();
 
             services.AddMvc().AddJsonOptions(options =>
             {

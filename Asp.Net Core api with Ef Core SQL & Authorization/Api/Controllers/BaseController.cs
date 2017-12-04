@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -33,12 +34,35 @@ namespace $safeprojectname$.Controllers
             serviceResult.Messages.AddMessage(MessageType.Error, ex.Message);
         }
 
+        protected void CreateSuccessResult(ServiceResult serviceResult, object data, string message)
+        {
+            serviceResult.Success = true;
+            serviceResult.Data = data;
+            serviceResult.Messages.AddMessage(MessageType.Info, message);
+        }
+
         protected long GetUserId()
         {
             long id = -1;
             var userId = User.Claims.Where(c => c.Type == "userId").Select(c => c.Value).FirstOrDefault();
             long.TryParse(userId, out id);
             return id;
+        }
+
+        protected async Task<IActionResult> MakeActionCall<TResult>(Func<Task<TResult>> action)
+        {
+            var serviceResult = new ServiceResult();
+            try
+            {
+                var result = await action();
+                CreateSuccessResult(serviceResult, result, "OK");
+            }
+            catch (Exception e)
+            {
+                CreateErrorResult(serviceResult, e);
+            }
+
+            return Json(serviceResult);
         }
     }
 }
