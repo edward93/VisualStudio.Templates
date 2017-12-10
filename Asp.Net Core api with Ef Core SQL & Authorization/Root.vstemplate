@@ -6,7 +6,7 @@
     -- Asp.Net Core 2.0
     -- EF Core 2.0
     -- Serilog
-    v0.2.4
+    v0.2.5
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>

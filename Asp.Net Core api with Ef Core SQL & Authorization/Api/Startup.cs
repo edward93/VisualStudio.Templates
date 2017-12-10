@@ -93,7 +93,7 @@ namespace $safeprojectname$
             services.AddScoped<IUserService, UserService>();
 
             // Repositories
-            services.AddScoped<IEntityRepository<Entity>, EntityRepository<Entity>>();
+            services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
 
             services.AddMvc().AddJsonOptions(options =>
             {
