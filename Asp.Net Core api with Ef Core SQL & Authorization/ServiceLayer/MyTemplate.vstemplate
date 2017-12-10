@@ -13,6 +13,8 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="IEntityService.cs">IEntityService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IUserService.cs">IUserService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserService.cs">UserService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IGenericService.cs">IGenericService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GenericService.cs">GenericService.cs</ProjectItem>
       </Folder>
     </Project>
   </TemplateContent>

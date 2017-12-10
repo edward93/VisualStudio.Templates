@@ -91,6 +91,7 @@ namespace $safeprojectname$
 
             // Services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
             // Repositories
             services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
