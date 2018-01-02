@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Hosting;
 using $safeprojectname$.Infrastructure;
 using $ext_safeprojectname$.Infrastructure.Enums;
 using $ext_safeprojectname$.Infrastructure.Helpers;
@@ -14,8 +15,9 @@ namespace $safeprojectname$.Controllers
     {
         protected readonly ILogger Logger;
         protected readonly AppSettings Settings;
+        protected readonly IHostingEnvironment Environment;
 
-        public BaseController(ILoggerFactory loggerFactory, IOptions<AppSettings> settings)
+        public BaseController(ILoggerFactory loggerFactory, IOptions<AppSettings> settings, IHostingEnvironment environment)
         {
             Logger = loggerFactory.CreateLogger("Controller");
             Settings = settings.Value;
