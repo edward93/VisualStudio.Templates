@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Hosting;
 using $safeprojectname$.Infrastructure;
 using $safeprojectname$.ViewModels;
 using $ext_safeprojectname$.DAL.Entities;
@@ -26,7 +27,8 @@ namespace $safeprojectname$.Controllers
         public TokenController(IUserService userService,
             IOptions<TokenProviderOptions> options,
             IOptions<AppSettings> settings,
-            ILoggerFactory logger) : base(logger, settings)
+            ILoggerFactory logger,
+            IHostingEnvironment env) : base(logger, settings, env)
         {
             _userService = userService;
             _options = options.Value;
