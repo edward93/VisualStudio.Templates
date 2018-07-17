@@ -46,6 +46,7 @@ namespace $safeprojectname$.Controllers
         protected long GetUserId()
         {
             long id = -1;
+            if (!User.Claims.Any()) throw new Exception("Could not load any claims from token");
             var userId = User.Claims.Where(c => c.Type == "userId").Select(c => c.Value).FirstOrDefault();
             long.TryParse(userId, out id);
             return id;

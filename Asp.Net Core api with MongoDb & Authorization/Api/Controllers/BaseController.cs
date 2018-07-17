@@ -45,6 +45,7 @@ namespace $safeprojectname$.Controllers
 
         protected string GetUserId()
         {
+            if (!User.Claims.Any()) throw new Exception("Could not load any claims from token");
             var userId = User.Claims.Where(c => c.Type == "userId").Select(c => c.Value).FirstOrDefault();
             return userId;
         }

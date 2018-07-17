@@ -2,7 +2,7 @@
   <TemplateData>
     <Name>ASP.NET Core With Neo4j</Name>
     <Description>Generates API controlle project and DAL with Neo4j Context and generic Entity.cs file and Token Authorization 
-    v0.0.1
+    v0.1.0
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
