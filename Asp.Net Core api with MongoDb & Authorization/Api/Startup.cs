@@ -122,6 +122,8 @@ namespace $safeprojectname$
                 builder.AllowCredentials().AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             });
 
+            app.UseStaticFiles();
+
             var loggerConfig = new LoggerConfiguration()
                 .WriteTo.File(Path.Combine(env.WebRootPath, "Logs", "log-.json"), rollingInterval: RollingInterval.Day)
                 .CreateLogger();
