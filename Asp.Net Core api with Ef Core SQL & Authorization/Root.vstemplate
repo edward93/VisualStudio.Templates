@@ -1,18 +1,19 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>ASP.NET Core With EF Core 2.0 And Sql Server</Name>
+    <Name>ASP.NET Core With EF Core 2.1 And Sql Server</Name>
     <Description>
-    Generates API controlle project and DAL with SQL (EF Core 2) Context and generic Entity.cs file and Token Authorization
-    -- Asp.Net Core 2.0
-    -- EF Core 2.0
+    Generates API controlle project and DAL with SQL (EF Core 2.1) Context and generic Entity.cs file and Token Authorization
+    -- Asp.Net Core 2.1
+    -- EF Core 2.1
     -- Serilog
-    v0.3.2
+    -- Swagger
+    v0.4.3
     </Description>
-    <ProjectType>CSharp</ProjectType>
-    <ProjectSubType>Web</ProjectSubType>
+    <ProjectType>Web</ProjectType>
+    <ProjectSubType>CSharp</ProjectSubType>
     <SortOrder>10</SortOrder>
     <CreateNewFolder>false</CreateNewFolder>
-    <DefaultName>AspNetWithMongoDb</DefaultName>
+    <DefaultName>AspNetCoreWithSql</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
