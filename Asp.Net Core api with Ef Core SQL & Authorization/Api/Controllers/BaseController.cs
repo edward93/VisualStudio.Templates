@@ -11,6 +11,7 @@ using $ext_safeprojectname$.Infrastructure.Helpers;
 
 namespace $safeprojectname$.Controllers
 {
+    [Route("api/[controller]")]
     public class BaseController : Controller
     {
         protected readonly ILogger Logger;
