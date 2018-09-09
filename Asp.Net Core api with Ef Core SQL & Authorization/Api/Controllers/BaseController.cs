@@ -35,6 +35,14 @@ namespace $safeprojectname$.Controllers
         {
             serviceResult.Success = false;
             serviceResult.Messages.AddMessage(MessageType.Error, ex.Message);
+            Logger.LogError(JsonConvert.SerializeObject(serviceResult, settings: new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            }));
+            Logger.LogError(JsonConvert.SerializeObject(ex, settings: new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            }));
         }
 
         protected void CreateSuccessResult(ServiceResult serviceResult, object data, string message)
@@ -42,6 +50,10 @@ namespace $safeprojectname$.Controllers
             serviceResult.Success = true;
             serviceResult.Data = data;
             serviceResult.Messages.AddMessage(MessageType.Info, message);
+            Logger.LogInformation(JsonConvert.SerializeObject(serviceResult, settings: new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            }));
         }
 
         protected long GetUserId()

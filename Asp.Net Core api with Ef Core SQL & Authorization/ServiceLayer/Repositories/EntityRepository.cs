@@ -30,6 +30,11 @@ namespace $safeprojectname$.Repositories
             return await DbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
         }
 
+        public async Task<dynamic> GetEntityAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>> project, params Expression<Func<T, object>>[] includes)
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).Select(project).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllEntitiesAsync()
         {
             return await DbContext.Set<T>().ToListAsync();
@@ -40,12 +45,25 @@ namespace $safeprojectname$.Repositories
             return await DbContext.Set<T>().Where(filter).ToListAsync();
         }
 
+        public async Task<IEnumerable<dynamic>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>> project, params Expression<Func<T, object>>[] includes)
+        {
+            return await DbContext.Set<T>().IncludeMultiple(includes).Where(filter).Select(project).ToListAsync();
+        }
+
         public async Task<T> RemoveEntityAsync(long entityId)
         {
             var entityToRemove = await DbContext.Set<T>().FirstOrDefaultAsync(c => c.Id == entityId);
             DbContext.Set<T>().Remove(entityToRemove);
             await DbContext.SaveChangesAsync();
             return entityToRemove;
+        }
+
+        public async Task<IEnumerable<T>> RemoveEntitiesAsync(Expression<Func<T, bool>> filter)
+        {
+            var entitiesToRemove = await DbContext.Set<T>().Where(filter).ToListAsync();
+            DbContext.Set<T>().RemoveRange(entitiesToRemove);
+            await DbContext.SaveChangesAsync();
+            return entitiesToRemove;
         }
 
         public async Task<T> CreateAsync(T entity)
