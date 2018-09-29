@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using $safeprojectname$.Infrastructure;
 using $ext_safeprojectname$.Infrastructure.Enums;
 using $ext_safeprojectname$.Infrastructure.Helpers;
+using Newtonsoft.Json;
 
 namespace $safeprojectname$.Controllers
 {
