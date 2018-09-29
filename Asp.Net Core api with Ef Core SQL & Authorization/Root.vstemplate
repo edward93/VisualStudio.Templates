@@ -7,7 +7,7 @@
     -- EF Core 2.1
     -- Serilog
     -- Swagger
-    v0.4.7
+    v0.5.0
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
@@ -34,5 +34,6 @@
         ServiceLayer\MyTemplate.vstemplate
       </ProjectTemplateLink>
     </ProjectCollection>
+    <ProjectItem ReplaceParameters="true" TargetFileName="README.md">README.md</ProjectItem>
   </TemplateContent>
 </VSTemplate>
