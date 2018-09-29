@@ -13,7 +13,7 @@ namespace $safeprojectname$.Controllers
     [Route("api/[controller]")]
     public class BaseRestFulController<T> : BaseController where T : Entity
     {
-        private readonly IGenericService<T> _genericService;
+        protected readonly IGenericService<T> _genericService;
         public BaseRestFulController(ILoggerFactory loggerFactory, IOptions<AppSettings> settings, IGenericService<T> genericService, IHostingEnvironment env) : base(loggerFactory, settings, env)
         {
             _genericService = genericService;
