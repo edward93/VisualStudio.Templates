@@ -7,7 +7,7 @@
     -- EF Core 2.1
     -- Serilog
     -- Swagger
-    v0.4.5
+    v0.4.7
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>

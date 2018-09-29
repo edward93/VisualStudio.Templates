@@ -19,6 +19,13 @@ namespace $safeprojectname$.Controllers
             _genericService = genericService;
         }
 
+        private void AddUserInfoToModel(ref T model)
+        {
+            var currentUserId = TryGetUserId();
+            model.CreatedBy = currentUserId;
+            model.UpdatedBy = currentUserId;
+        }
+
         [HttpGet]
         public virtual async Task<IActionResult> Get()
         {
@@ -44,6 +51,10 @@ namespace $safeprojectname$.Controllers
         {
             return await MakeActionCall(async () =>
             {
+                AddUserInfoToModel(ref model);
+
+                await TryUpdateModelAsync(model);
+
                 if (!ModelState.IsValid)
                 {
                     throw new Exception(GetModelStateErrors());
@@ -59,6 +70,10 @@ namespace $safeprojectname$.Controllers
         {
             return await MakeActionCall(async () =>
             {
+                AddUserInfoToModel(ref model);
+
+                await TryUpdateModelAsync(model);
+
                 if (!ModelState.IsValid)
                 {
                     throw new Exception(GetModelStateErrors());

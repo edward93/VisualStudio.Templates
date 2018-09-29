@@ -66,6 +66,23 @@ namespace $safeprojectname$.Controllers
             return id;
         }
 
+        protected long TryGetUserId()
+        {
+            var userId = (long)0;
+            try
+            {
+                userId = GetUserId();
+            }
+            catch(Exception e)
+            {
+                Logger.LogWarning(JsonConvert.SerializeObject(e, settings: new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                }));
+            }
+            return userId;
+        }
+
         protected async Task<IActionResult> MakeActionCall<TResult>(Func<Task<TResult>> action)
         {
             var serviceResult = new ServiceResult();
