@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>ASP.NET Core With EF Core 2.1 And Sql Server</Name>
+    <Name>ASP.NET Core With EF Core 2.2 And Sql Server</Name>
     <Description>
-    Generates API controlle project and DAL with SQL (EF Core 2.1) Context and generic Entity.cs file and Token Authorization
-    -- Asp.Net Core 2.1
-    -- EF Core 2.1
+    Generates API controlle project and DAL with SQL (EF Core 2.2) Context and generic Entity.cs file and Token Authorization
+    -- Asp.Net Core 2.2
+    -- EF Core 2.2
     -- Serilog
     -- Swagger
-    v0.5.0
+    v0.5.1
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
