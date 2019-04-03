@@ -7,17 +7,18 @@
     -- EF Core 2.2
     -- Serilog
     -- Swagger
-    v0.5.1
+    v0.5.2
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
-    <SortOrder>10</SortOrder>
+    <SortOrder>0</SortOrder>
     <CreateNewFolder>false</CreateNewFolder>
     <DefaultName>AspNetCoreWithSql</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
-    <Icon>__TemplateIcon.ico</Icon>
+    <Icon>__Icon.ico</Icon>
+    <PreviewImage>__Preview.png</Icon>
   </TemplateData>
   <TemplateContent>
     <ProjectCollection>
