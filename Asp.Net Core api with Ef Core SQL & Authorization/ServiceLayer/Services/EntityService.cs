@@ -31,6 +31,11 @@ namespace $safeprojectname$.Services
             return await _entityRepository.GetEntityAsync(filter, includes);
         }
 
+        public async Task<dynamic> GetEntityAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>> project, params Expression<Func<T, object>>[] includes)
+        {
+            return await _entityRepository.GetEntityAsync(filter, project, includes);
+        }
+
         public async Task<IEnumerable<T>> GetAllEntitiesAsync()
         {
             return await _entityRepository.GetAllEntitiesAsync();
@@ -46,9 +51,19 @@ namespace $safeprojectname$.Services
             return await _entityRepository.GetAllEntitiesAsync(filter, includes);
         }
 
+        public async Task<IEnumerable<dynamic>> GetAllEntitiesAsync(Expression<Func<T, bool>> filter, Expression<Func<T, object>> project, params Expression<Func<T, object>>[] includes)
+        {
+            return await _entityRepository.GetAllEntitiesAsync(filter, project, includes);
+        }
+
         public async Task<T> RemoveEntityAsync(long entityId)
         {
             return await _entityRepository.RemoveEntityAsync(entityId);
+        }
+
+        public async Task<IEnumerable<T>> RemoveEntitiesAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _entityRepository.RemoveEntitiesAsync(filter);
         }
 
         public async Task<T> CreateAsync(T entity)

@@ -10,6 +10,7 @@
       <Folder Name="wwwroot" TargetFolderName="wwwroot" />
       <Folder Name="Controllers" TargetFolderName="Controllers">
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseController.cs">BaseController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseRestFulController.cs">BaseRestFulController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="TokenController.cs">TokenController.cs</ProjectItem>
       </Folder>
       <Folder Name="Infrastructure" TargetFolderName="Infrastructure">

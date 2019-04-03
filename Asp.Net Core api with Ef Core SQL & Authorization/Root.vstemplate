@@ -1,22 +1,24 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>ASP.NET Core With EF Core 2.0 And Sql Server</Name>
+    <Name>ASP.NET Core With EF Core 2.2 And Sql Server</Name>
     <Description>
-    Generates API controlle project and DAL with SQL (EF Core 2) Context and generic Entity.cs file and Token Authorization
-    -- Asp.Net Core 2.0
-    -- EF Core 2.0
+    Generates API controlle project and DAL with SQL (EF Core 2.2) Context and generic Entity.cs file and Token Authorization
+    -- Asp.Net Core 2.2
+    -- EF Core 2.2
     -- Serilog
-    v0.2.8
+    -- Swagger
+    v0.5.2
     </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Web</ProjectSubType>
-    <SortOrder>10</SortOrder>
+    <SortOrder>0</SortOrder>
     <CreateNewFolder>false</CreateNewFolder>
-    <DefaultName>AspNetWithMongoDb</DefaultName>
+    <DefaultName>AspNetCoreWithSql</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
-    <Icon>__TemplateIcon.ico</Icon>
+    <Icon>__Icon.ico</Icon>
+    <PreviewImage>__Preview.png</Icon>
   </TemplateData>
   <TemplateContent>
     <ProjectCollection>
@@ -33,5 +35,6 @@
         ServiceLayer\MyTemplate.vstemplate
       </ProjectTemplateLink>
     </ProjectCollection>
+    <ProjectItem ReplaceParameters="true" TargetFileName="README.md">README.md</ProjectItem>
   </TemplateContent>
 </VSTemplate>

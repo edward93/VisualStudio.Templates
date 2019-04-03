@@ -19,7 +19,6 @@ using $ext_safeprojectname$.ServiceLayer.Services;
 
 namespace $safeprojectname$.Controllers
 {
-    [Route("api/[controller]")]
     public class TokenController : BaseController
     {
         private readonly IUserService _userService;

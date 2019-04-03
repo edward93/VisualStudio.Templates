@@ -1,0 +1,2 @@
+# $safeprojectname$
+Application description
